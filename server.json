@@ -1,0 +1,69 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "employee": [
+    {
+      "id": "0001",
+      "fullName": "Kevin",
+      "mail": "test@test.com",
+      "role": "Admin",
+      "experience": "8",
+      "contactNo": 939492919
+    },
+    {
+      "id": "0002",
+      "fullName": "test",
+      "mail": "test1@test.com",
+      "role": "Manager",
+      "experience": "2",
+      "contactNo": 930201023
+    },
+    {
+      "id": "0003",
+      "fullName": "phil",
+      "mail": "phil@test.com",
+      "role": "Developer",
+      "experience": "2",
+      "contactNo": 819292919
+    },
+    {
+      "id": "0004",
+      "fullName": "james",
+      "mail": "james@test.com",
+      "role": "HR",
+      "experience": "5",
+      "contactNo": 930200102
+    },
+    {
+      "id": "0005",
+      "fullName": "test1",
+      "mail": "test1@test.com",
+      "role": "Developer",
+      "experience": "5",
+      "contactNo": 930101830
+    },
+    {
+      "id": "0006",
+      "fullName": "test2",
+      "mail": "test2@test.com",
+      "role": "Developer",
+      "experience": "3",
+      "contactNo": 92083202
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
