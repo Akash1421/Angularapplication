@@ -13,7 +13,7 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class FrontpagesComponent implements OnInit {
   //getting data from the json file
-  displayedColumns: string[] = ['id', 'fullName', 'mail', 'role','experience','contactNo','action'];
+  displayedColumns: string[] = ['fullName', 'mail', 'role','experience','contactNo','DateofJoining','action'];
   dataSource = new MatTableDataSource<any>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -81,3 +81,7 @@ export class FrontpagesComponent implements OnInit {
 
 } 
 
+//getting data 
+// {data:{
+//   list:this.dataSource
+// }}

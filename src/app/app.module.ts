@@ -38,22 +38,21 @@ import { MatSelectModule } from '@angular/material/select';
     MatIconModule,
     MatButtonModule, 
     MatDialogModule,  
-    BrowserAnimationsModule, 
-    MatFormFieldModule, 
+    BrowserAnimationsModule,  
     MatInputModule, 
     HttpClientModule,
     MatNativeDateModule, 
     ReactiveFormsModule, 
     MatFormFieldModule, 
-    MatSelectModule,  
-    HttpClientModule, 
-    MatDatepickerModule
+    MatSelectModule,   
+    MatDatepickerModule, 
+   
     
     
     
   ],
   providers: [
-    MatDatepickerModule,
+    
   ], 
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
