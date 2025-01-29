@@ -56,7 +56,7 @@ export class EmpAddEditComponent implements OnInit {
       case 'Manager':
         return 5;
       case 'Admin':
-        return 3;
+        return 8;
       default:
         return 0;
     }

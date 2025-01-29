@@ -16,12 +16,12 @@
   "employee": [
     {
       "id": "0001",
-      "fullName": "Kevin",
+      "fullName": "kevin",
       "mail": "test@test.com",
       "role": "Admin",
       "experience": "8",
       "contactNo": 939492919,
-      "DateofJoining": "2/12/2025"
+      "DateofJoining": "2025-01-09T08:00:00.000Z"
     },
     {
       "id": "0002",
