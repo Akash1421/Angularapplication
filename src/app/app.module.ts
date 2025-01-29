@@ -19,6 +19,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
+import { PracticeComponent } from './practice/practice.component';
 
 
 
@@ -26,7 +27,8 @@ import { MatSelectModule } from '@angular/material/select';
   declarations: [
     AppComponent,
     FrontpagesComponent,
-    EmpAddEditComponent
+    EmpAddEditComponent,
+    PracticeComponent
   ],
   imports: [
     BrowserModule,  

@@ -1,0 +1,25 @@
+<form [formGroup]="practiceForm">
+    <div class="row">
+      <mat-form-field>
+        <mat-label>Experience</mat-label>
+        <input matInput type="text" formControlName="experience">
+        <mat-error *ngIf="practiceForm.get('experience')?.hasError('required') && practiceForm.get('experience')?.touched">
+          Experience is required
+        </mat-error>
+        <mat-error *ngIf="practiceForm.get('experience')?.hasError('pattern') && practiceForm.get('experience')?.touched">
+          User must have an experience of 4
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Select</mat-label>
+        <mat-select formControlName="vehicle">
+          <mat-option *ngFor="let option of options" [value]="option">{{ option }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="practiceForm.get('vehicle')?.hasError('required') && practiceForm.get('vehicle')?.touched">
+          Vehicle selection is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+  

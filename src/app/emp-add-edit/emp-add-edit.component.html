@@ -2,7 +2,7 @@
     <h1 mat-dialog-title>Enter Employee Details</h1>
 </div>
 <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
-    <!-- ID and Full Name in one row -->
+    <!-- FullName and Email -->
     <div class="row">
       
   
@@ -11,12 +11,16 @@
         <input matInput type="text" formControlName="fullName" placeholder="Kevin">
         <mat-error *ngIf="employeeForm.get('fullName')?.hasError('required') && employeeForm.get('fullName')?.touched">
             Full name is required.
+          </mat-error> 
+          <mat-error *ngIf="employeeForm.errors?.duplicateEmployee">
+            This combination of Full Name and Role already exists.
           </mat-error>
         
           <!-- Error message for minlength -->
           <mat-error *ngIf="employeeForm.get('fullName')?.hasError('minlength') && !employeeForm.get('fullName')?.hasError('required')">
             Full Name should be at least 3 characters.
-          </mat-error>
+          </mat-error> 
+
       </mat-form-field>  
        
       <mat-form-field appearance="fill" class="form-field">
@@ -31,7 +35,7 @@
      
     </div>
   
-    <!-- Mail and Roles in one row -->
+    <!-- Roles and Experience -->
     <div class="row"> 
          
        
@@ -46,8 +50,13 @@
       <mat-form-field appearance="fill" class="form-field">
         <mat-label>Experience</mat-label>
         <input matInput type="text" formControlName="experience" placeholder="3 years">
-        <mat-error *ngIf="employeeForm.get('experience')?.invalid && employeeForm.get('experience')?.touched">
-          Experience is required.
+        
+         <mat-error *ngIf="employeeForm.get('experience')?.hasError('required') && employeeForm.get('experience')?.touched|| (employeeForm.get('role')?.value)"> 
+          Experience is required
+         </mat-error>
+      
+        <mat-error *ngIf="employeeForm.get('experience')?.hasError('min') && employeeForm.get('experience')?.touched || (employeeForm.get('role')?.value)">
+          Minimum experience required: {{ getMinExperience() }} years.
         </mat-error>
       </mat-form-field>
        
