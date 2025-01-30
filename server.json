@@ -94,6 +94,15 @@
       "experience": "5",
       "contactNo": 920832023,
       "DateofJoining": "2025-01-29T08:00:00.000Z"
+    },
+    {
+      "id": "ev1CWLR",
+      "fullName": "Ronaldo",
+      "mail": "ronaldo@test.com",
+      "role": "Manager",
+      "experience": "6",
+      "contactNo": 920832023,
+      "DateofJoining": "2025-01-30T08:00:00.000Z"
     }
   ],
   "profile": {

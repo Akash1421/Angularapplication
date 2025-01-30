@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -9,6 +9,7 @@ import {
 import { DataService } from '../data.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { uniqueEmployeeValidator } from '../validators/custom-validators';
+import { MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
   selector: 'app-emp-add-edit',
@@ -18,8 +19,12 @@ import { uniqueEmployeeValidator } from '../validators/custom-validators';
 export class EmpAddEditComponent implements OnInit {
   employeeForm: FormGroup;
   employeeRoles: string[] = ['Admin', 'Manager', 'Developer', 'HR']; // Roles
-  existingEmployees: any[] = [];
-
+  existingEmployees: any[] = []; 
+  ManagerList:any[] =['phil']; 
+   
+  @ViewChild('menuTrigger') menuTrigger!: MatMenuTrigger; 
+ 
+  //constructor
   constructor(
     private fb: FormBuilder,
     private empService: DataService,
@@ -33,10 +38,7 @@ export class EmpAddEditComponent implements OnInit {
         mail: ['', [Validators.required, Validators.email]],
         role: ['', Validators.required],
         experience: ['', Validators.required],
-        contactNo: [
-          '',
-          [Validators.required, Validators.pattern(/^\d+$/), this.minDigitsLength(9)],
-        ],
+        contactNo: ['',[Validators.required, Validators.pattern(/^\d+$/), this.minDigitsLength(9)]],
         DateofJoining: ['', Validators.required],
       },
       {
@@ -45,7 +47,8 @@ export class EmpAddEditComponent implements OnInit {
     );
   }
  
-   
+    
+  //outputing the required experience
   getMinExperience(): number {
     const role = this.employeeForm.get('role')?.value;
     switch (role) {
@@ -60,14 +63,28 @@ export class EmpAddEditComponent implements OnInit {
       default:
         return 0;
     }
-  }
+  } 
+ 
+   
+  
+    
+
+  //ngOnInit function
   ngOnInit(): void {
    
-    this.empService.getEmployeeList().subscribe((employees) => {
-      this.existingEmployees = employees;
-      this.employeeForm.setValidators(uniqueEmployeeValidator(this.existingEmployees));
+    this.empService.getEmployeeList().subscribe((employees) => { 
+      
+      this.existingEmployees = employees; 
+      console.log(this.existingEmployees)
+      this.employeeForm.setValidators(uniqueEmployeeValidator(this.existingEmployees));   
+       
+      this.ManagerList = this.existingEmployees.filter(emp => emp.role.includes('Manager')).map(emp => emp.fullName)
+       
+
+      
     });
-  
+   
+     
     
     if (this.data) {
       this.employeeForm.patchValue(this.data);
@@ -81,29 +98,34 @@ export class EmpAddEditComponent implements OnInit {
         experienceControl?.setValidators([
           Validators.required,
           Validators.min(2), 
-        ]);
-      } else if (role === 'HR') {
+        ]); 
+        
+      } 
+      else if (role === 'HR') {
         experienceControl?.setValidators([
           Validators.required,
           Validators.min(1), 
         ]);
-      } else if (role === 'Manager') {
+      }  
+      else if (role === 'Manager') {
         experienceControl?.setValidators([
           Validators.required,
           Validators.min(3), 
         ]);
-      } else if (role === 'Admin') {
+      } 
+      else if (role === 'Admin') {
         experienceControl?.setValidators([
           Validators.required,
           Validators.min(8),
         ]);
-      } else {
+      } 
+      else {
         experienceControl?.setValidators([Validators.required]);
         experienceControl?.setValue('');
       }
   
-      experienceControl?.updateValueAndValidity(); // Revalidate the field
-      experienceControl?.markAsTouched(); // **Force error message display**
+      experienceControl?.updateValueAndValidity(); 
+      experienceControl?.markAsTouched(); 
     });
   }
 

@@ -37,9 +37,6 @@
 
   <!-- Roles and Experience -->
   <div class="row"> 
-       
-     
-
     <mat-form-field appearance="fill" class="form-field">
       <mat-label>Roles</mat-label>
       <mat-select formControlName="role">
@@ -65,8 +62,7 @@
 
   <!-- Experience and Contact No in one row -->
   <div class="row">
-    
-
+ 
     <mat-form-field appearance="fill" class="form-field">
       <mat-label>Contact No</mat-label>
       <input matInput type="number" formControlName="contactNo" placeholder="0101010101">
@@ -85,10 +81,17 @@
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
+  </div> 
+   
+  <div class="row">  
+    <button mat-button [matMenuTriggerFor]="menu" *ngIf="employeeForm.get('role')?.value === 'Developer'">ManagerList</button> 
+    <mat-menu #menu="matMenu"> 
+        <button mat-menu-item *ngFor="let manager of ManagerList" [value]="manager">{{manager}}</button>
+    </mat-menu>
   </div>
 
   <!-- Save and Cancel Buttons -->
-  <div class="row">
+  <div class="action">
     <button mat-raised-button color="primary" type="submit" [disabled]="employeeForm.invalid">{{data ? 'Update':'Save'}}</button>
     <button mat-raised-button color="warn" type="button" [mat-dialog-close]="false">Cancel</button>
   </div>

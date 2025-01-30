@@ -20,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { PracticeComponent } from './practice/practice.component';
-import { MatSortModule } from '@angular/material/sort';
+import { MatSortModule } from '@angular/material/sort'; 
+import {MatMenuModule} from '@angular/material/menu';
 
 
 
@@ -49,7 +50,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatFormFieldModule, 
     MatSelectModule,   
     MatDatepickerModule, 
-    MatSortModule
+    MatSortModule, 
+    MatMenuModule
     
     
   ],
