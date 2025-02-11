@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core'; 
 import { Observable } from 'rxjs'; 
 import { HttpClient } from '@angular/common/http'; 
-export interface Employee{ 
-  id:string; 
-  fullname:string; 
-  mail:string; 
-  roles:string; 
-  address:string; 
-  contactNo:Number;
-}
+// export interface Employee{ 
+//   id:string; 
+//   fullname:string; 
+//   mail:string; 
+//   roles:string; 
+//   address:string; 
+//   contactNo:Number;
+// }
 
 @Injectable({
   providedIn: 'root'

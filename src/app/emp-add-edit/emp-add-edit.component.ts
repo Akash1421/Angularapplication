@@ -21,8 +21,9 @@ export class EmpAddEditComponent implements OnInit {
   employeeRoles: string[] = ['Admin', 'Manager', 'Developer', 'HR']; // Roles
   existingEmployees: any[] = []; 
   ManagerList:any[] =['phil']; 
+
    
-  @ViewChild('menuTrigger') menuTrigger!: MatMenuTrigger; 
+ 
  
   //constructor
   constructor(
@@ -39,7 +40,8 @@ export class EmpAddEditComponent implements OnInit {
         role: ['', Validators.required],
         experience: ['', Validators.required],
         contactNo: ['',[Validators.required, Validators.pattern(/^\d+$/), this.minDigitsLength(9)]],
-        DateofJoining: ['', Validators.required],
+        DateofJoining: ['', Validators.required], 
+        ManagerLists:['',Validators.required]
       },
       {
         validators: uniqueEmployeeValidator(this.existingEmployees),
@@ -77,13 +79,10 @@ export class EmpAddEditComponent implements OnInit {
       this.existingEmployees = employees; 
       console.log(this.existingEmployees)
       this.employeeForm.setValidators(uniqueEmployeeValidator(this.existingEmployees));   
-       
-      this.ManagerList = this.existingEmployees.filter(emp => emp.role.includes('Manager')).map(emp => emp.fullName)
-       
-
-      
+      this.ManagerList = this.existingEmployees.filter(emp => emp.role.includes('Manager')).map(emp => emp.fullName)  
     });
-   
+    
+    
      
     
     if (this.data) {
@@ -92,7 +91,9 @@ export class EmpAddEditComponent implements OnInit {
   
     //dynamic validation code for roles and experience
     this.employeeForm.get('role')?.valueChanges.subscribe((role) => {
-      const experienceControl = this.employeeForm.get('experience');
+      const experienceControl = this.employeeForm.get('experience'); 
+       
+      
   
       if (role === 'Developer') {
         experienceControl?.setValidators([

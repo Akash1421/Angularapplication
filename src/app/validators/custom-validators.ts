@@ -1,5 +1,5 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { Employee } from '../data.service';
+
 
 export function minDigitsLength1(minLength: number): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -10,7 +10,7 @@ export function minDigitsLength1(minLength: number): ValidatorFn {
   };
 } 
  
-export function uniqueEmployeeValidator(existingEmployees:Employee[]):ValidatorFn{ 
+export function uniqueEmployeeValidator(existingEmployees:any[]):ValidatorFn{ 
   return (control:AbstractControl): ValidationErrors | null =>{ 
     const fullName = control.get('fullName')?.value; 
     const role = control.get('role')?.value; 
@@ -21,4 +21,15 @@ export function uniqueEmployeeValidator(existingEmployees:Employee[]):ValidatorF
     ); 
     return isDuplicate?{duplicateEmployee:true}:null;
   }
+} 
+ 
+export function validateSentence(contorl:AbstractControl){ 
+  const abusiveWords=['fool','stupid','idiot','damn','bloddy'];  
+  const sentence = contorl.value; 
+  const wordsArr = sentence.split(" "); 
+  let isClean = true 
+  for(let word of wordsArr){ 
+    
+  }
+
 }

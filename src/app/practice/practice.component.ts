@@ -7,32 +7,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./practice.component.css']
 })
 export class PracticeComponent implements OnInit {
-
-  practiceForm: FormGroup;
-  options: string[] = ['Car', 'Bus', 'Bike', 'Auto'];
-
-  constructor(private fb: FormBuilder) {
-    this.practiceForm = this.fb.group({
-      experience: ['', [Validators.required]],
-      vehicle: ['', [Validators.required]]
-    });
-
-    this.practiceForm.get('vehicle')?.valueChanges.subscribe(selectedVehicle => {
-      const experienceControl = this.practiceForm.get('experience');
-
-      if (selectedVehicle === 'Auto') {
-        experienceControl?.setValidators([
-          Validators.required,
-          Validators.pattern(/^4$/) // Ensure experience is exactly 4
-        ]);
-      } else {
-        experienceControl?.setValidators([Validators.required]);
-      }
-
-      experienceControl?.updateValueAndValidity();
-      experienceControl?.markAsTouched(); // Mark as touched so errors appear immediately
-    });
+  myForm:FormGroup; 
+  constructor(private fb:FormBuilder){ 
+    this.myForm=this.fb.group({ 
+      inputField:['',[Validators.required,Validators.minLength(3)]]
+    })
   }
+  
 
-  ngOnInit(): void {}
+  ngOnInit(): void {  
+   
+   
+  }
 }
