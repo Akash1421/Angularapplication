@@ -22,7 +22,32 @@ import { MatSelectModule } from '@angular/material/select';
 import { PracticeComponent } from './practice/practice.component';
 import { MatSortModule } from '@angular/material/sort'; 
 import {MatMenuModule} from '@angular/material/menu';
+import { RouterModule, Routes } from '@angular/router';
+import { RolesComponent } from './components/roles/roles.component';
+import { EmployeeDetailsComponent } from './components/employee-details/employee-details.component';
+import { AssestsComponent } from './components/assests/assests.component';
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
+import { HeaderComponent } from './components/header/header.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { AddRolesComponent } from './components/add-roles/add-roles.component';
 
+
+const routes:Routes=[ 
+  { 
+    path:'',
+    redirectTo:'/roles',
+    pathMatch:'full'
+  },
+  { 
+    path:'roles',
+    component:RolesComponent
+  },
+  { 
+    path:'employee-details',
+    component:EmployeeDetailsComponent
+  }
+]
 
 
 @NgModule({
@@ -30,7 +55,16 @@ import {MatMenuModule} from '@angular/material/menu';
     AppComponent,
     FrontpagesComponent,
     EmpAddEditComponent,
-    PracticeComponent
+    PracticeComponent,
+    PracticeComponent,
+    RolesComponent,
+    EmployeeDetailsComponent,
+    AssestsComponent,
+    LoginComponent,
+    HomeComponent,
+    HeaderComponent,
+    AddRolesComponent
+
   ],
   imports: [
     BrowserModule,  
@@ -51,7 +85,12 @@ import {MatMenuModule} from '@angular/material/menu';
     MatSelectModule,   
     MatDatepickerModule, 
     MatSortModule, 
-    MatMenuModule
+    MatMenuModule,
+    MatMenuModule,
+    RouterModule,
+    RouterModule.forRoot(routes),
+    MatSlideToggleModule
+
     
     
   ],

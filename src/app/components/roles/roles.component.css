@@ -1,0 +1,19 @@
+table{ 
+    width: 100%;
+} 
+th,td{ 
+    white-space: nowrap; 
+    padding: 8px;
+} 
+mat-slide-toggle[disabled] {
+    pointer-events: none;
+    opacity: 0.6; /* Optional: visually make the disabled toggle look faded */
+  }
+.header{ 
+    width: 100%;
+  
+    
+}
+.spacer{ 
+    flex: 1;
+}
