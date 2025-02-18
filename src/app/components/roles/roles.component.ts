@@ -26,12 +26,30 @@ export class RolesComponent implements OnInit {
     })
   } 
 
-   editRoles(data:any){ 
-
-   }
-
+  //code for updating roles
+  editRoles(data:any){ 
+      const dialogRef = this._dialogRef.open(AddRolesComponent,{ 
+        data
+      }); 
+      console.log(data)
+      dialogRef.afterClosed().subscribe({ 
+        next:(val)=>{ 
+          if(val){ 
+            this.getRoles();
+          }
+        }
+      })
+    }
+   //code for deleting the roles
    deleteRoles(id:number){ 
-
+    //calling the roleservice delete api method
+    this.rolesService.deleteRole(id).subscribe({ 
+      next:(res)=>{ 
+        alert("role deleted");
+        this.getRoles();
+      },
+      error:console.log
+    })
    }
 
    addRolesForm(){ 

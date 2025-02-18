@@ -13,8 +13,8 @@
     <!--name and created on fields-->
     <div class="row"> 
         <mat-form-field appearance="fill" class="form-field"> 
-            <mat-label>Name</mat-label>
-            <input matInput type="text" formControlName="name" placeholder="enter name"/>
+            <mat-label>Role</mat-label>
+            <input matInput type="text" formControlName="name" placeholder="enter role"/>
             <mat-error *ngIf="addrolesForm.get('name')?.hasError('required') && addrolesForm.get('name')?.touched">
                 Name is required
             </mat-error>
@@ -52,7 +52,7 @@
 
     <!--Action buttons-->
     <div class="row"> 
-        <button mat-raised-button color="primary" type="submit" [disabled]="addrolesForm.invalid">save</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="addrolesForm.invalid">{{data?'Update':'save'}}</button>
         <button mat-raised-button color="danger" type="button" [mat-dialog-close]="false">Cancel</button>
     </div>
 </form>

@@ -60,7 +60,7 @@ export class FrontpagesComponent implements OnInit {
   //Function to edit details 
   openEditDetails(data:any){ 
     const dialogRef = this._dialog.open(EmpAddEditComponent,{ 
-      data,
+      data
     }); 
     dialogRef.afterClosed().subscribe({ 
       next:(val)=>{ 
