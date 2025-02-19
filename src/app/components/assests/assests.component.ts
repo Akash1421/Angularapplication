@@ -11,5 +11,6 @@ export class AssestsComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
 
 }
