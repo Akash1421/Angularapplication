@@ -31,12 +31,14 @@ import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AddRolesComponent } from './components/add-roles/add-roles.component';
+import { AddAssestComponent } from './components/add-assest/add-assest.component';
+import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
 
 
 const routes:Routes=[ 
   { 
     path:'',
-    redirectTo:'/roles',
+    redirectTo:'/login',
     pathMatch:'full'
   },
   { 
@@ -46,6 +48,22 @@ const routes:Routes=[
   { 
     path:'employee-details',
     component:EmployeeDetailsComponent
+  },
+  { 
+    path:'assests',
+    component:AssestsComponent
+  },
+  { 
+    path:'employee',
+    component:FrontpagesComponent
+  },
+  { 
+    path:'login',
+    component:LoginComponent
+  },
+  { 
+    path:'home',
+    component:HomeComponent
   }
 ]
 
@@ -63,7 +81,9 @@ const routes:Routes=[
     LoginComponent,
     HomeComponent,
     HeaderComponent,
-    AddRolesComponent
+    AddRolesComponent,
+    AddAssestComponent,
+    AddEmployeeComponent
 
   ],
   imports: [

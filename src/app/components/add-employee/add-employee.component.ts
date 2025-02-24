@@ -1,22 +1,17 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  ValidationErrors,
-  Validators,
-} from '@angular/forms';
-import { DataService } from '../data.service';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { uniqueEmployeeValidator } from '../validators/custom-validators';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DataService } from 'src/app/data.service';
+import { EmpAddEditComponent } from 'src/app/emp-add-edit/emp-add-edit.component';
+import { uniqueEmployeeValidator } from 'src/app/validators/custom-validators';
 
 @Component({
-  selector: 'app-emp-add-edit',
-  templateUrl: './emp-add-edit.component.html',
-  styleUrls: ['./emp-add-edit.component.css'],
+  selector: 'app-add-employee',
+  templateUrl: './add-employee.component.html',
+  styleUrls: ['./add-employee.component.css']
 })
-export class EmpAddEditComponent implements OnInit {
-  employeeForm: FormGroup;
+export class AddEmployeeComponent implements OnInit {
+employeeForm: FormGroup;
   employeeRoles: string[] = ['Admin', 'Manager', 'Developer', 'HR']; // Roles
   existingEmployees: any[] = []; 
   ManagerList:any[] =['phil']; 
@@ -31,6 +26,7 @@ export class EmpAddEditComponent implements OnInit {
     private _dialogRef: MatDialogRef<EmpAddEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
+    
     this.employeeForm = this.fb.group(
       {
         id: [''],
@@ -46,6 +42,7 @@ export class EmpAddEditComponent implements OnInit {
         validators: uniqueEmployeeValidator(this.existingEmployees),
       }
     );
+    
   }
  
     
@@ -166,4 +163,5 @@ export class EmpAddEditComponent implements OnInit {
       return value.length >= minLength ? null : { minDigitsLength: true };
     };
   }
+
 }

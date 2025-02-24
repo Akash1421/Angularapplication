@@ -1,18 +1,15 @@
-  
 <div class="header"> 
     <mat-toolbar> 
         <span>Roles Details</span>
         <span class="spacer"></span> 
         <button mat-raised-button color="primary" (click)="addRolesForm()">Add Roles</button>
     </mat-toolbar>
-    
-    
 </div>
 
 <div class="container"> 
     <div *ngIf="roles">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
-        <table mat-table [dataSource]="roles" class="mat-elevation-z8" > 
+        <table mat-table [dataSource]="roles" class="mat-elevation-z8"> 
             <!--id column-->
             <ng-container matColumnDef="id">  
                 <th mat-header-cell *matHeaderCellDef>ID</th>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { AssestsService } from 'src/app/services/assests-service/assests.service';
+import { AddAssestComponent } from '../add-assest/add-assest.component';
 
 @Component({
   selector: 'app-assests',
@@ -7,10 +10,50 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssestsComponent implements OnInit {
 
-  constructor() { }
+//adding assest
+addAssest() {
+  const dialogRef = this._dialofRef.open(AddAssestComponent);
+
+}
+
+  assest:any[] =[];
+  displayedColumns:string[] = ['name','manufacturer','modelnumber','modelcategory','assignedto','cost','Action'];
+
+  constructor(private assestService:AssestsService, private _dialofRef:MatDialog) { 
+    this.getAllAssest();
+   }
 
   ngOnInit(): void {
+    
+
   }
+
+  //getting all the assest from database
+  getAllAssest(){ 
+    this.assestService.getAllAssests().subscribe(data=>{ 
+      this.assest = data;
+      console.log(this.assest);
+    })
+  }
+
+  //deleting assest
+  deleteAssest(id:number){ 
+    this.assestService.deleteAssest(id).subscribe({ 
+      next:(res)=>{ 
+        alert("Assest deleted");
+        this.getAllAssest();
+      },
+      error:console.log
+    })
+  }
+
+  //updating assest through a form
+  updateAssest(data:any){ 
+    this._dialofRef.open(AddAssestComponent,{data});
+    this.getAllAssest();
+  }
+
+
   
 
 }

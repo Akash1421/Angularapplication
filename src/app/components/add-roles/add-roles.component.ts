@@ -34,8 +34,9 @@ export class AddRolesComponent implements OnInit {
       if(this.data){ 
         this.roleService.updateRoles(this.data.id,this.addrolesForm.value).subscribe({ 
           next:()=>{ 
-            alert("employee detail updated");
+            alert("roles detail updated");
             this._dialogRef.close(true);
+            
           },
           error:(err:any)=>{ 
             console.log(err);
