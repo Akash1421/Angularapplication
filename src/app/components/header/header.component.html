@@ -2,7 +2,7 @@
 <div class="header">
     <div class="header-left">
         <mat-icon>whatshot</mat-icon>
-        <span>Assets Application</span>
+        <span (click)="navigateTo('home')">Assets Application</span>
     </div>
     <div class="header-right">
         <input type="text" class="search-box" placeholder="Search...">
@@ -12,5 +12,6 @@
             <button mat-menu-item routerLink="/assests">Assets Allocation</button>
             <button mat-menu-item routerLink="/employee-details">Employee Details</button>
         </mat-menu>
+        <mat-icon style="font-size: 30px;">account_circle</mat-icon>
     </div>
 </div>

@@ -16,9 +16,9 @@ export class EmployeeDetailService {
   }
 
   //function to add employee
-  addEmployee(data:any[]):Observable<any[]>{ 
-    return this.http.post<any[]>(`${this.apiURL}`,data);
-  }
+  addEmployee(data:any[]):Observable<any>{ 
+    return this.http.post<any[]>(`${this.apiURL}`,data)
+  } 
 
   //function to update employee details
   updateEmployee(data:any[],id:number):Observable<any[]>{ 

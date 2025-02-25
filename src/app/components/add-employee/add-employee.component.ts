@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DataService } from 'src/app/data.service';
 import { EmpAddEditComponent } from 'src/app/emp-add-edit/emp-add-edit.component';
+import { EmployeeDetailService } from 'src/app/services/employee-detail/employee-detail.service';
 import { uniqueEmployeeValidator } from 'src/app/validators/custom-validators';
 
 @Component({
@@ -22,7 +23,7 @@ employeeForm: FormGroup;
   //constructor
   constructor(
     private fb: FormBuilder,
-    private empService: DataService,
+    private empService: EmployeeDetailService,
     private _dialogRef: MatDialogRef<EmpAddEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
@@ -30,13 +31,13 @@ employeeForm: FormGroup;
     this.employeeForm = this.fb.group(
       {
         id: [''],
-        fullName: ['', [Validators.required, Validators.minLength(3)]],
+        fullname: ['', [Validators.required, Validators.minLength(3)]],
         mail: ['', [Validators.required, Validators.email]],
         role: ['', Validators.required],
         experience: ['', Validators.required],
         contactNo: ['',[Validators.required, Validators.pattern(/^\d+$/), this.minDigitsLength(9)]],
-        DateofJoining: ['', Validators.required], 
-        ManagerLists:['']
+        dateOfJoining: ['', Validators.required], 
+        
       },
       {
         validators: uniqueEmployeeValidator(this.existingEmployees),
@@ -70,11 +71,12 @@ employeeForm: FormGroup;
   //ngOnInit function
   ngOnInit(): void {
    
-    this.empService.getEmployeeList().subscribe((employees) => { 
+    this.empService.getAllEmployees().subscribe((employees) => { 
       
       this.existingEmployees = employees; 
       console.log(this.existingEmployees)
-      this.employeeForm.setValidators(uniqueEmployeeValidator(this.existingEmployees));   
+      this.employeeForm.setValidators(uniqueEmployeeValidator(this.existingEmployees));    
+    
       this.ManagerList = this.existingEmployees.filter(emp => emp.role.includes('Manager')).map(emp => emp.fullName)  
     });
     
@@ -127,6 +129,7 @@ employeeForm: FormGroup;
   }
 
   onSubmit(): void {
+
     if (this.employeeForm.valid) {
       console.log('Form Submitted:', this.employeeForm.value); // Debug log
       if (this.data) {
