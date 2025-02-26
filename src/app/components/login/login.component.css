@@ -42,3 +42,9 @@
     margin-left: 0;
     margin-right: 0;
   }
+  .message{ 
+    text-align: center;
+  }
+  a{ 
+    color: crimson;
+  }

@@ -33,6 +33,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AddRolesComponent } from './components/add-roles/add-roles.component';
 import { AddAssestComponent } from './components/add-assest/add-assest.component';
 import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 const routes:Routes=[ 
@@ -64,6 +65,9 @@ const routes:Routes=[
   { 
     path:'home',
     component:HomeComponent
+  },{ 
+    path:'register',
+    component:RegisterComponent
   }
 ]
 
@@ -83,7 +87,8 @@ const routes:Routes=[
     HeaderComponent,
     AddRolesComponent,
     AddAssestComponent,
-    AddEmployeeComponent
+    AddEmployeeComponent,
+    RegisterComponent
 
   ],
   imports: [

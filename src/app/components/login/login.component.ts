@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login-service/login.service';
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-login',
@@ -12,14 +15,18 @@ export class LoginComponent implements OnInit {
   private Username = 'admin';
   private Password = 'password123';
 
-  constructor(private fb: FormBuilder,private router:Router) {
+  loginDetails:any[]=[];
+
+  constructor(private fb: FormBuilder,private router:Router,private loginservice:LoginService,private _dialogRef:MatDialog) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
+    this.loginDetails
    }
 
   ngOnInit(): void {
+    this.getAllLoginDetails();
    
   }
 
@@ -28,8 +35,11 @@ export class LoginComponent implements OnInit {
       const username = this.loginForm.get('username')!.value;
       const password = this.loginForm.get('password')!.value;
 
-      // Check if username and password are correct
-      if (username === this.Username && password === this.Password) {
+      const isValidUser = this.loginDetails.some(
+        (user) => user.username === username && user.password === password
+      );
+
+      if (isValidUser) {
         // Navigate to the HomeComponent
         this.router.navigate(['/home']);
       } else {
@@ -38,5 +48,20 @@ export class LoginComponent implements OnInit {
       }
     }
   }
+ 
+  getAllLoginDetails(){ 
+    this.loginservice.getAllLoginDetails().subscribe(data=>{ 
+      this.loginDetails=data;
+      console.log(this.loginDetails);
+    })
+  }
+  navigateTo(route: string): void {
+    this._dialogRef.open(RegisterComponent)
+   
+  }
+
+
 
 }
+
+
